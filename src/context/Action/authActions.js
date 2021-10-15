@@ -128,7 +128,7 @@ export const resetPassword = ({email}) => async (dispatch)=>{
        dispatch({
             type:RESET_PASS_SUCCESS,
             loading:false,
-            payload:"Password reset email sent!"
+            payload:"Password reset email sent!" 
         })
     })
     .catch((error) => {
