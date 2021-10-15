@@ -35,6 +35,7 @@ export const generateUserDocument = async (user, additionalData) => {
     try {
       await setDoc(docRef, {
         email: user.email,
+        photoURL:user.photoURL || null,
         displayName: displayName || null,
         firstName: firstName || null,
         lastName: lastName || null,

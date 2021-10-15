@@ -15,8 +15,8 @@ import {
   import Login from '../../pages/auth/Login';
   import Dashboard from '../../pages/Dashboard';
 import PrivateRoute from './PrivateRoute';
+import ForgotPassword from '../../pages/auth/ForgotPassword';
 export default function PageRoutes() {
-    let user = false;
     return (
         <Switch>
             <Route exact path="/">
@@ -36,20 +36,13 @@ export default function PageRoutes() {
                 <Blog/>
             </Route>
             <Route exact path="/register">
-                {!user ? 
-                <Register/> : 
-                <>
-                    <GeneralNav/>
-                    <MainHome/>
-                </>}
+              <Register/> 
+            </Route>
+            <Route exact path="/forgot-password">
+              <ForgotPassword/>
             </Route>
             <Route exact path="/login">
-                {!user ? 
-                <Login/>: 
-                <>
-                    <GeneralNav/>
-                    <MainHome/>
-                </>}
+                <Login/>
             </Route>
             <PrivateRoute exact path="/dashboard">
                 <Dashboard/>

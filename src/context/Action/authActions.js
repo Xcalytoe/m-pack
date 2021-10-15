@@ -1,6 +1,6 @@
 
 import {auth, googleProvider, generateUserDocument } from '../../firebase/firebaseConfig';
-import { GoogleAuthProvider, signInWithPopup, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { REG_LOADING, REG_SUCCESS, REG_ERROR, LOGIN_LOADING, LOGIN_SUCCESS, LOGIN_ERROR, SIGNOUT_SUCCESS, SIGNOUT_LOADING, SIGNOUT_ERROR,RESET_PASS_LOADING,RESET_PASS_SUCCESS,RESET_PASS_ERROR } from '../actionsType/actiontypes';
 
 // sign in user with google 
@@ -9,21 +9,26 @@ export const googleSign = () => async (dispatch)=>{
         type:REG_LOADING,
         loading: true,
     })
-    signInWithPopup(auth, googleProvider )
+    await signInWithPopup(auth, googleProvider )
     .then((result) => {
+
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
+
         // The signed-in user info.
         return result.user;      
     }).then(async ( user) => {
-        let dummy = { displayName :null, firstName:null, lastName:null}
-        return await generateUserDocument(user, dummy);
+        let dummy = { displayName :user.displayName, firstName:null, lastName:null}
+        return await generateUserDocument(user, dummy);//get user details 
 
     }).then(val => {
         dispatch({
             type:REG_SUCCESS,
-            payload:val
+            payload:val,
+            loading:false
+
         })
+
     }).catch((error) => {
         // Handle Errors here.
         var errorMessage = error.message;
@@ -47,7 +52,9 @@ export const registerUser = ({email, password, firstName, lastName}, {displayNam
     // dispatch data returened 
         dispatch({
             type:REG_SUCCESS,
-            payload:data
+            payload:data,
+            loading:false
+
         })
     }
     catch(error){
@@ -108,24 +115,29 @@ export const signOutUser = () => async (dispatch)=>{
       });
 }
 // password reset 
-export const resetPassword = (emailAddress) => async (authDispatch)=>{
-    authDispatch({
+export const resetPassword = ({email}) => async (dispatch)=>{
+    dispatch({
         type:RESET_PASS_LOADING,
         loading:true,
     })
-    auth.sendPasswordResetEmail(emailAddress).then(function() {
-  // Email sent.
-  authDispatch({
-    type:RESET_PASS_SUCCESS,
-    loading:false,
-    payload:"Email has been sent"
-})
-}).catch(function(error) {
-  // An error happened.
-  authDispatch({
-    type:RESET_PASS_ERROR,
-    loading:false,
-    payload: error.message
-})
-});
+    sendPasswordResetEmail(auth, email, {url: "http://localhost:3000/login"})
+    .then(() => {
+        console.log("sent",email)
+
+       // Email sent.
+       dispatch({
+            type:RESET_PASS_SUCCESS,
+            loading:false,
+            payload:"Password reset email sent!"
+        })
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+    // An error happened.
+        dispatch({
+            type:RESET_PASS_ERROR,
+            loading:false,
+            payload: errorMessage
+        })
+    });
 }

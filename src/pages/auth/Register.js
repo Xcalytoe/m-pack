@@ -10,9 +10,10 @@ import { regSchema } from "./Schema";
 import './auth.scss';
 import Spinner from "../../components/Spinner";
 import { Redirect } from 'react-router-dom';
-
+import { useHistory } from "react-router-dom";
 
 export default function Register() {
+    let history = useHistory();
     const {state, dispatch } = useContext(GlobalContext);
     const { authError, loading, user } = state;
     const { control, register, handleSubmit, formState:{ errors }  } = useForm({
@@ -29,14 +30,16 @@ export default function Register() {
         setFormState({...formState,[name]:value});
     }
 
-    const createUserWithEmailAndPasswordHandler = (data) => {
+    const createUserWithEmailAndPasswordHandler = async (data) => {
         let displayName = data.firstName;
-        registerUser(data, {displayName})(dispatch);
+        await registerUser(data, {displayName})(dispatch);
+        history.push('/dashboard');
     };
-    const signInWithGoogle = (e) => {
+    const signInWithGoogle = async (e) => {
         e.preventDefault();
         //    call the auth action 
-       googleSign()(dispatch);
+       await googleSign()(dispatch);
+       history.push('/dashboard');
     };
       // check if user signed in  
       if (user){
@@ -171,7 +174,7 @@ export default function Register() {
                             {errors?.password ? <span className="form-group__error-msg">{errors?.password.message}</span>: null}
 
                             <div className="form-group__rule">
-                                <p>Minimum of 8 characters</p>
+                                <p>Minimum of 6 characters</p>
                                 <p>One UPPERCASE character</p>
                                 <p>One unique character (e.g: !@#$%^&amp;*?)</p>
                             </div>

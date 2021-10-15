@@ -50,6 +50,21 @@
             display: inline-block; 
         }
     }
+    &__main-msg{
+        margin-bottom: 10px;
+        display: -webkit-flex;
+        display: flex;
+        align-items: center;
+        span{
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 20px;
+            color: #069481; 
+            margin-top: 0;
+            display: inline-block; 
+        }
+    }
     h4{
         font-style: normal;
         font-weight: bold;

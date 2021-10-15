@@ -9,8 +9,10 @@ import { loginSchema } from "./Schema";
 import './auth.scss';
 import Spinner from "../../components/Spinner";
 import { Redirect } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 export default function Login() {
+    let history = useHistory();
     const {state, dispatch } = useContext(GlobalContext);
     const { loginError, loading, user } = state;
     const { register, handleSubmit, formState:{ errors }  } = useForm({
@@ -27,14 +29,16 @@ export default function Login() {
         setFormState({...formState,[name]:value});
     }
 
-    const loginUserWithEmailAndPasswordHandler = (data) => {
+    const loginUserWithEmailAndPasswordHandler = async (data) => {
         // e.preventDefault();
-        signIn(data)(dispatch);
+        await signIn(data)(dispatch);
+        history.push('/dashboard');
     };
-    const signInWithGoogle = (e) => {
+    const signInWithGoogle = async (e) => {
         e.preventDefault();
         //    call the auth action 
-        googleSign()(dispatch);
+        await googleSign()(dispatch);
+        history.push('/dashboard');
     };
     // check if user signed in  
     if (user){
@@ -112,6 +116,7 @@ export default function Login() {
                             {errors?.loginPass ? <span className="form-group__error-msg">{errors?.loginPass.message}</span>: null}
                         </div>
                     </div>
+                  
                     <div className="auth-container__submit flex justify-center">
                         <button type="submit" > 
                         {loading ?
@@ -134,6 +139,11 @@ export default function Login() {
                             <path d="M18.1712 8.36791H17.5V8.33333H10V11.6667H14.7096C14.3809 12.5902 13.7889 13.3972 13.0067 13.9879L13.0079 13.9871L15.5871 16.1696C15.4046 16.3354 18.3333 14.1667 18.3333 9.99999C18.3333 9.44124 18.2758 8.89583 18.1712 8.36791Z" fill="#1976D2"/>
                             </svg> &nbsp;
             Login with Google</button>
+                    </div>
+                    <div>
+                    <Link to="/forgot-password">
+                        Forgot password?
+                        </Link>
                     </div>
                 </form>
             </div>

@@ -23,3 +23,9 @@ export const loginSchema = yup.object().shape({
         .required("Please enter your email"),
     loginPass: yup.string().required("Field cannot be empty"),
 }).required();
+
+export const forgotPassSchema = yup.object().shape({
+    email: yup.string()
+        .email("Must be a valid email")
+        .required("Please enter your email"),
+}).required();
