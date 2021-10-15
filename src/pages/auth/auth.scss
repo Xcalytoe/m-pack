@@ -1,0 +1,230 @@
+@import "../../style/sass//m_pack_mixins";
+.auth-container{
+    background: linear-gradient(to bottom, #000099 0%, #0000ff 100%);
+    padding: 2px 0;
+    &__nav{
+        margin-top: 30px ;
+        display: inline-block;
+        background: hsl(240, 100%, 99%);
+        @include border-radius (8px 0 8px 0);
+        padding: 5px;
+    }
+    &__logo{
+        display: inline-block;
+        max-height: 80px;
+        div{
+            align-items: center;
+            justify-content: center;
+        }
+        text-decoration: none;
+    }
+    &__m-style{
+        font-family: 'Leckerli One', cursive;
+        font-size: 30px;
+        font-weight: normal;
+        color: #fff;
+        background: hsl(240, 100%, 30%);
+        @include border-radius(4px);
+        padding: 6px;
+        display: block;
+        line-height: 30px;
+    }
+    &__pack{
+        font-family: 'Leckerli One', ;
+        font-size: 30px;
+        line-height: 30px;
+        color: hsl(240, 100%, 20%);
+    }
+    &__main-error{
+        margin-bottom: 10px;
+        display: -webkit-flex;
+        display: flex;
+        align-items: center;
+        span{
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 20px;
+            color: #C81C1C; 
+            margin-top: 0;
+            display: inline-block; 
+        }
+    }
+    h4{
+        font-style: normal;
+        font-weight: bold;
+        font-size: 28px;
+        line-height: 34px;
+        color: #012224; 
+        margin: 0;
+    }
+    &__next-link{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 22px;
+        color: #2E3A59; 
+        margin-bottom: 28px;
+        margin-top: 10px;
+    }
+    &__form {
+        background: hsl(240, 100%, 98%);
+        margin: 100px auto;
+        max-width: 500px;
+        @include border(1px solid #6200EE);
+        @include border(1px solid hsl(240, 100%, 90%));
+        padding: 34px 20px;
+        @include border-radius(10px);
+    }
+    &__submit{
+        button{
+            display:-webkit-flex;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 15px;
+            line-height: 22px;
+            color: #FFFFFF; 
+            height: 50px; 
+            width: 100%;
+            @include border(1px solid hsl(240, 100%, 30%));
+            margin-bottom: 20px;
+            background: hsl(240, 100%, 30%);
+            @include box-shadow (0px 4px 20px rgba(20, 50, 132, 0.15));
+            @include border-radius (5px);
+            cursor: pointer;
+            @include transition(all 0.3s);
+            &:hover, &:focus{
+                @include transition(all 0.3s);
+                color: hsl(240, 100%, 30%); 
+                @include border(1px solid hsl(240, 100%, 30%));
+                background: hsl(240, 100%, 98%);
+            }
+        }
+    }
+    &__google{
+        button{
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            justify-content: center;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 15px;
+            line-height: 22px;
+            color: hsl(240, 100%, 30%); 
+            height: 50px; 
+            width: 100%;
+            @include border(1px solid hsl(240, 100%, 30%));
+            margin-bottom: 20px;
+            background: hsl(240, 100%, 98%);
+            @include box-shadow (0px 4px 20px rgba(20, 50, 132, 0.15));
+            @include border-radius (5px);
+            cursor: pointer;
+            @include transition(all 0.3s);
+            &:hover{
+                @include transition(all 0.3s);
+                color: #FFFFFF; 
+                @include border(1px solid hsl(240, 100%, 30%));
+                background: hsl(240, 100%, 30%);
+            }
+        }
+    }
+}
+.form-group{
+    margin-bottom: 25px;
+    &__error-msg{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 20px;
+        color: #C81C1C; 
+        margin-top: 0;
+        display: inline-block;
+    }
+    &__rule{
+        margin: 30px 0;
+        p{
+            font-style: normal;
+            font-weight: normal;
+            font-size: 11px;
+            line-height: 13px;
+            color: #2E3A59; 
+            margin-bottom: 11px;
+        }
+    }
+}
+.form-input {
+    position: relative; 
+    &__eye-con{
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        display: flex;
+        align-items: center;
+        transform: translateY(-50%);
+    }
+    label {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        @include transform (translateY(-50%));
+        background-color: white;
+        padding: 0 0.3rem;
+        padding-right: 1.5rem;
+        margin: 0 0.5rem;
+        @include transition (.1s ease-out);
+        transform-origin: left top;
+        pointer-events: none;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+        color: #2E3A59; 
+    }
+    input {
+        font-size: 1rem;
+        outline: none;
+        border: 1px solid gray;
+        border-radius: 5px;  
+        padding: 1rem 0.7rem;
+        height: 50px;
+        color: gray;
+        width: 100%;
+        @include transition( all 0.1s ease-out);
+        &.error{
+            @include border(1px solid red);
+            @include transition( all 0.1s ease-out);
+
+        }
+        &.focused{
+                // border-color: #6200EE; 
+                background: #fff;
+            + label {
+                color: hsl(240, 100%, 40%);
+                top: 0;
+                font-weight: 600;
+                @include transform (translateY(-50%) scale(.9));
+            } 
+        }
+        // &:not(:placeholder-shown) + label {
+        //     top: 0;
+        //     transform: translateY(-50%) scale(.9);
+        // }
+        &:focus {
+            // border-color: #6200EE; 
+            + label {
+                color: #6200EE;
+                top: 0;
+                @include transform( translateY(-50%) scale(.9));
+            } 
+        }
+
+    
+    }
+}
+  
