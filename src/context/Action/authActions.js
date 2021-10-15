@@ -120,7 +120,7 @@ export const resetPassword = ({email}) => async (dispatch)=>{
         type:RESET_PASS_LOADING,
         loading:true,
     })
-    sendPasswordResetEmail(auth, email, {url: "http://localhost:3000/login"})
+    sendPasswordResetEmail(auth, email, {url: "https://m-pack.netlify.app/login"})
     .then(() => {
         console.log("sent",email)
 
