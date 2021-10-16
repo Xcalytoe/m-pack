@@ -55,12 +55,12 @@ export default function MainHome() {
             to="/blog/posts"
             title="Blog"
           />
-          {/* <ProductCard
+          <ProductCard
             // srcset={`${blog1} 310w,${blog} 730w,`}
-            src="https://via.placeholder.com/400x210"
+            // src="https://via.placeholder.com/400x210"
             to="/"
             title="Coming Soon!"
-          /> */}
+          />
         </div>
       </section>
     </main>
