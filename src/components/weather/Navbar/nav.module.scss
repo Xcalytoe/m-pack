@@ -1,43 +1,43 @@
 @import "../../../style//sass/m_pack.scss";
-.m_style{
-    font-family: 'Leckerli One', cursive;
-    font-size: 30px;
-    font-weight: normal;
-    color: #fff;
-    background: #A05;
-    background: hsl(180, 80%, 30%);
-    @include border-radius(4px);
-    padding: 6px;
-    display: block;
-    line-height: 30px;
+.m_style {
+  font-family: "Leckerli One", cursive;
+  font-size: 30px;
+  font-weight: normal;
+  color: #fff;
+  background: #a05;
+  background: hsl(180, 80%, 30%);
+  @include border-radius(4px);
+  padding: 6px;
+  display: block;
+  line-height: 30px;
 }
-.header{
-    padding-top: 12px;
-    padding-bottom: 12px; 
-    @include box-shadow(0px 4px 4px rgba(0, 0, 0, 0.02));
-    &__flex{
-        justify-content: space-between;
-        align-items: center;
-    }
-    a{
-        display: inline-block;
-    }
-}
-.colGap{
-    column-gap: 30px;
-}
-.logo{
+.header {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  @include box-shadow(0px 4px 4px rgba(0, 0, 0, 0.02));
+  &__flex {
+    justify-content: space-between;
+    align-items: center;
+  }
+  a {
     display: inline-block;
-    max-height: 80px;
-    div{
-        align-items: center;
-        justify-content: center;
-    }
-    text-decoration: none;
+  }
 }
-.pack{
-    font-family: 'Leckerli One', ;
-    font-size: 30px;
-    line-height: 30px;
-    color:hsl(180, 80%, 20%);
+.colGap {
+  column-gap: 30px;
+}
+.logo {
+  display: inline-block;
+  max-height: 80px;
+  div {
+    align-items: center;
+    justify-content: center;
+  }
+  text-decoration: none;
+}
+.pack {
+  font-family: "Leckerli One";
+  font-size: 30px;
+  line-height: 30px;
+  color: hsl(180, 80%, 20%);
 }

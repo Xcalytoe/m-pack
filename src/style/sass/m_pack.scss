@@ -1,101 +1,110 @@
 @import "m_pack_mixins";
 // @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap');
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
-a, button, input, select, textarea{
-    &:focus{
-        @include border(none);
-        @include outline(none);
-        @include box-shadow(none); 
-    }
+a,
+button,
+input,
+select,
+textarea {
+  &:focus {
+    @include border(none);
+    @include outline(none);
+    @include box-shadow(none);
+  }
 }
 
 /* responsive container */
-.section-container, .main-container {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+.section-container,
+.main-container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 body {
-    font-family: 'Archivo', sans-serif;
-    line-height: 1.7;
-    margin: 0;
-    padding: 0;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: none;
-    -moz-text-size-adjust: none;
-    -ms-text-size-adjust: none;
-    text-size-adjust: none;
+  font-family: "Archivo", sans-serif;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  text-size-adjust: none;
 }
- p{
-    font-family: 'Archivo', sans-serif;
+p {
+  font-family: "Archivo", sans-serif;
 }
-h1,h2,h3,h4,h5,h6{
-    font-family: 'Archivo', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Archivo", sans-serif;
 }
 
-@media (min-width: 576px){
-    .main-container{
-        max-width: 540px;
-    }
+@media (min-width: 576px) {
+  .main-container {
+    max-width: 540px;
+  }
 }
-@media (min-width: 768px){
-    .section-container {
-        max-width: 720px;
-    }
-    .main-container{
-        max-width: 740px;
-    }
+@media (min-width: 768px) {
+  .section-container {
+    max-width: 720px;
+  }
+  .main-container {
+    max-width: 740px;
+  }
 }
-@media (min-width: 868px){
-    .main-container{
-        max-width: 840px;
-    }
+@media (min-width: 868px) {
+  .main-container {
+    max-width: 840px;
+  }
 }
-@media (min-width: 991px){
-    .main-container {
-        max-width: 960px;
-    }
+@media (min-width: 991px) {
+  .main-container {
+    max-width: 960px;
+  }
 }
-@media (min-width: 1200px){
-    .main-container {
-        max-width: 1140px;
-    }
+@media (min-width: 1200px) {
+  .main-container {
+    max-width: 1140px;
+  }
 }
-@media (min-width: 1360px){
-    .main-container {
-        max-width: 1290px;
-    }
-
+@media (min-width: 1360px) {
+  .main-container {
+    max-width: 1290px;
+  }
 }
-@media (min-width: 1600px){
-    .main-container  {
-        max-width: 1400px;
-    }
+@media (min-width: 1600px) {
+  .main-container {
+    max-width: 1400px;
+  }
 }
 /* main grid */
-.grid{
-    display: -moz-grid;
-    display: grid;
+.grid {
+  display: -moz-grid;
+  display: grid;
 }
-    /* main flex */
-.flex{
-    display: -webkit-flex;
-    display: flex;
+/* main flex */
+.flex {
+  display: -webkit-flex;
+  display: flex;
 }
-.wrap{
-    -webkit-flex-wrap:wrap;
-    flex-wrap: wrap;
+.wrap {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
-  
+
 * {
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
 }
 html {
-    scroll-behavior: smooth;
-  }
+  scroll-behavior: smooth;
+}

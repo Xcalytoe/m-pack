@@ -12,7 +12,8 @@ import { generateUserDocument } from '../firebase/firebaseConfig';
 
 export const GlobalContext = createContext();
 
-export const GlobalProvider = (props) => {
+// eslint-disable-next-line react/prop-types
+export const GlobalProvider = ({children}) => {
     const initialState = { ...initialAuthState }
     const [state, dispatch] = useReducer(rootReducer, initialState)
     // const [authState, authDispatch] = useReducer(auths, authInitial)
@@ -25,7 +26,7 @@ export const GlobalProvider = (props) => {
         const auth = getAuth();
         onAuthStateChanged(auth, async (user) => {
           if (user) {
-                let data = await generateUserDocument(user, {});
+                const data = await generateUserDocument(user, {});
               // dispatch user's info 
               dispatch({
                 type:LOGIN_SUCCESS,
@@ -45,7 +46,7 @@ export const GlobalProvider = (props) => {
             state, 
             dispatch
         }}>
-            {!loading && props.children}
+            {!loading && children}
         </GlobalContext.Provider>
     )
 }

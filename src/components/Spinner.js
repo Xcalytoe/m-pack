@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
 
-function Spinner({colorLight, colorDark}) {
-    return (
-      <>
-        <div id="loading"></div> 
+// eslint-disable-next-line react/prop-types
+function Spinner({ colorLight, colorDark }) {
+  return (
+    <>
+      <div id="loading"></div>
       <style>
         {`
         #loading {
@@ -25,8 +26,8 @@ function Spinner({colorLight, colorDark}) {
         }
         `}
       </style>
-        </>
-    )
+    </>
+  );
 }
 
-export default Spinner
+export default Spinner;

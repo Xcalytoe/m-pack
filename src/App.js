@@ -1,16 +1,14 @@
-import './style/sass/m_pack.scss';
+import React from "react";
+import "./style/sass/m_pack.scss";
 import { GlobalProvider } from "./context/Provider";
-import {
-  BrowserRouter as Router,
-} from "react-router-dom";
-import PageRoutes from './components/Routes';
+import { BrowserRouter as Router } from "react-router-dom";
+import PageRoutes from "./routes";
 
-function App(props) {
-  console.log(props)
+function App() {
   return (
     <GlobalProvider>
       <Router>
-       <PageRoutes/>
+        <PageRoutes />
       </Router>
     </GlobalProvider>
   );
