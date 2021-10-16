@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import style from "./nav.module.scss";
-import { GlobalContext } from "../../../context/Provider";
-import { signOutUser } from "../../../context/action/authActions";
+import { GlobalContext } from "../../../helper/context/Provider";
+import { signOutUser } from "../../../helper/context/action/authActions";
 
 export default function BlogNav() {
   const { state, dispatch } = useContext(GlobalContext);

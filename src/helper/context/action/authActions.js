@@ -2,9 +2,9 @@ import {
   auth,
   googleProvider,
   generateUserDocument,
-} from "../../firebase/firebaseConfig";
+} from "../../../firebase/firebaseConfig";
 import {
-//   GoogleAuthProvider,
+  //   GoogleAuthProvider,
   signInWithPopup,
   signOut,
   createUserWithEmailAndPassword,
@@ -46,7 +46,7 @@ export const googleSign = () => async (dispatch) => {
         firstName: null,
         lastName: null,
       };
-      return await generateUserDocument(user, dummy);  //   get user details
+      return await generateUserDocument(user, dummy); //   get user details
     })
     .then((val) => {
       dispatch({

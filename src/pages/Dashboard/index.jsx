@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../../context/Provider";
+import { GlobalContext } from "../../helper/context/Provider";
 import { Link } from "react-router-dom";
 
 export default function Dashboard() {

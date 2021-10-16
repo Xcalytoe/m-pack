@@ -10,7 +10,7 @@ import blog1 from "../../assets/images/blog/blog_uui62c_c_scale,w_310.webp";
 import ecommerce from "../../assets/images/ecommerce/ecommerce_clo8px_c_scale,w_730.webp";
 import ecommerce1 from "../../assets/images/ecommerce/ecommerce_clo8px_c_scale,w_310.webp";
 import ecommerce2 from "../../assets/images/ecommerce/ecommerce_clo8px_c_scale,w_684.webp";
-import ProductCard from "../../components/productCard/index";
+import ProductCard from "../../components/ProductCard/index";
 
 export default function MainHome() {
   return (

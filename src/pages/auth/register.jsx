@@ -1,24 +1,25 @@
 import React, { useState, useContext } from "react";
 import { Link, useHistory, Redirect } from "react-router-dom";
-import { googleSign, signIn } from "../../context/action/authActions";
-import { GlobalContext } from "../../context/Provider";
+import { googleSign, registerUser } from "../../helper/context/action/authActions";
+import { GlobalContext } from "../../helper/context/Provider";
+// import { FormInput } from '../../components/FormInput';
 import AuthLogo from "../../components/AuthLogo";
-import { useForm } from "react-hook-form";
+import { useForm /* Controller */ } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "../../constants/Schema";
+import { regSchema } from "../../validation/schema";
 import "./auth.scss";
 import Spinner from "../../components/Spinner";
 
-export default function Login() {
+export default function Register() {
   const history = useHistory();
   const { state, dispatch } = useContext(GlobalContext);
-  const { loginError, loading, user } = state;
+  const { authError, loading, user } = state;
   const {
-    register,
+    /* control, */ register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(loginSchema),
+    resolver: yupResolver(regSchema),
     mode: "all",
   });
   const [eyeToggle, setEyeToggle] = useState(true);
@@ -31,9 +32,9 @@ export default function Login() {
     setFormState({ ...formState, [name]: value });
   };
 
-  const loginUserWithEmailAndPasswordHandler = async (data) => {
-    // e.preventDefault();
-    await signIn(data)(dispatch);
+  const createUserWithEmailAndPasswordHandler = async (data) => {
+    const displayName = data.firstName;
+    await registerUser(data, { displayName })(dispatch);
     history.push("/dashboard");
   };
   const signInWithGoogle = async (e) => {
@@ -52,9 +53,9 @@ export default function Login() {
         <AuthLogo />
         <form
           className="auth-container__form bg-white w-full p-6 py-10 md:p-10 md:py-16"
-          onSubmit={handleSubmit(loginUserWithEmailAndPasswordHandler)}
+          onSubmit={handleSubmit(createUserWithEmailAndPasswordHandler)}
         >
-          {loginError ? (
+          {authError ? (
             <div className="auth-container__main-error">
               <svg
                 className="inline-block mr-3"
@@ -85,17 +86,85 @@ export default function Login() {
                 </defs>
               </svg>{" "}
               &nbsp;
-              <span className="">{loginError}</span>
+              <span className="">{authError}</span>
             </div>
           ) : (
             ""
           )}
-          <h4>Login</h4>
+          <h4>Create an account</h4>
           <p className="auth-container__next-link">
-            Don&rsquo;t have an account? &nbsp;
-            <Link to="/register">Register</Link>
+            Already have an account? &nbsp;
+            <Link to="/login">Login</Link>
           </p>
           <div className="form_grid">
+            {/* <Controller
+                        name="firstName"
+                        control={control}
+                        render={({ field }) => (
+                            <FormInput 
+                                label="First name"
+                                type="text"
+                                name="firstName"
+                            //   ref={register("firstName")}
+                            //   ref= {...register("firstName")} 
+                              errors={errors}
+                              {...field}
+                            />
+                          )}
+                        /> */}
+            <div className="form-group ">
+              <div className="form-input">
+                <input
+                  className={`${errors?.firstName ? "error" : ""} ${
+                    formState?.firstName ? "focused" : ""
+                  }`}
+                  name="firstName"
+                  id="firstName"
+                  {...register("firstName")}
+                  onChange={onChange}
+                />
+                <label htmlFor="firstName">First name</label>
+              </div>
+              {errors?.firstName ? (
+                <span className="form-group__error-msg">
+                  {errors?.firstName.message}
+                </span>
+              ) : null}
+            </div>
+            {/* <div className="form-group ">
+                            <div className="form-input">
+                                <input 
+                                    className={`${errors?.dateOfBirth ? "error": ""} ${formState?.dateOfBirth ? "focused": ""}`} 
+                                    name="dateOfBirth" 
+                                    type="date" 
+                                    id="dateOfBirth" 
+                                    {...register("dateOfBirth")}
+                                    onChange={onChange}
+                                />
+                                <label htmlFor="dateOfBirth">Date of birth</label>
+                            </div>
+                            {errors?.dateOfBirth ? <span className="form-group__error-msg">{errors?.dateOfBirth.message}</span>: null}
+                        </div> */}
+            <div className="form-group">
+              <div className="form-input">
+                <input
+                  className={`${errors?.lastName ? "error" : ""} ${
+                    formState?.lastName ? "focused" : ""
+                  }`}
+                  name="lastName"
+                  id="lastName"
+                  {...register("lastName")}
+                  onChange={onChange}
+                />
+                <label htmlFor="lastName">Last name</label>
+              </div>
+              {errors?.lastName ? (
+                <span className="form-group__error-msg">
+                  {errors?.lastName.message}
+                </span>
+              ) : null}
+            </div>
+
             <div className="form-group">
               <div className="form-input">
                 <input
@@ -119,16 +188,16 @@ export default function Login() {
             <div className="form-group">
               <div className="form-input">
                 <input
-                  className={`${errors?.loginPass ? "error" : ""} ${
-                    formState?.loginPass ? "focused" : ""
+                  className={`${errors?.password ? "error" : ""} ${
+                    formState?.password ? "focused" : ""
                   }`}
                   type={eyeToggle ? "password" : "text"}
-                  name="loginPass"
-                  id="loginPass"
-                  {...register("loginPass")}
+                  name="password"
+                  id="password"
+                  {...register("password")}
                   onChange={onChange}
                 />
-                <label htmlFor="loginPass">Password</label>
+                <label htmlFor="password">Password</label>
                 <span
                   className="form-input__eye-con"
                   onClick={(e) => {
@@ -159,16 +228,21 @@ export default function Login() {
                   </svg>
                 </span>
               </div>
-              {errors?.loginPass ? (
+              {errors?.password ? (
                 <span className="form-group__error-msg">
-                  {errors?.loginPass.message}
+                  {errors?.password.message}
                 </span>
               ) : null}
+
+              <div className="form-group__rule">
+                <p>Minimum of 6 characters</p>
+                <p>One UPPERCASE character</p>
+                <p>One unique character (e.g: !@#$%^&amp;*?)</p>
+              </div>
             </div>
           </div>
-
           <div className="auth-container__submit flex justify-center">
-            <button type="submit">
+            <button>
               {loading ? (
                 <>
                   <Spinner
@@ -178,7 +252,7 @@ export default function Login() {
                   &nbsp;
                 </>
               ) : null}
-              Login
+              Create an Account
             </button>
           </div>
           <div className="auth-container__google flex justify-center">
@@ -208,11 +282,8 @@ export default function Login() {
                   fill="#1976D2"
                 />
               </svg>{" "}
-              &nbsp; Login with Google
+              &nbsp; Sign up with Google
             </button>
-          </div>
-          <div>
-            <Link to="/forgot-password">Forgot password?</Link>
           </div>
         </form>
       </div>

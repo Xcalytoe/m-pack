@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
 import { Link, Redirect } from "react-router-dom";
-import { resetPassword } from "../../context/action/authActions";
-import { GlobalContext } from "../../context/Provider";
+import { resetPassword } from "../../helper/context/action/authActions";
+import { GlobalContext } from "../../helper/context/Provider";
 import AuthLogo from "../../components/AuthLogo";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { forgotPassSchema } from "../../constants/Schema";
+import { forgotPassSchema } from "../../validation/schema";
 import "./auth.scss";
 import Spinner from "../../components/Spinner";
 

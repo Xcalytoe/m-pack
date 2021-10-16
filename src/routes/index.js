@@ -1,18 +1,18 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import GeneralNav from "../components/generalNav";
-import MainHome from "../pages/home";
-import EcommerceNav from "../components/ecommerce/navbar";
-import Shop from "../pages/ecommerce/shop";
-import WeatherNav from "../components/weather/navbar";
-import WeatherHome from "../pages/weather/home";
-import BlogNav from "../components/blog/navbar";
-import Blog from "../pages/blog";
-import Register from "../pages/auth/Register";
-import Login from "../pages/auth/Login";
-import Dashboard from "../pages/dashboard";
+import GeneralNav from "../components/GeneralNav";
+import MainHome from "../pages/Home";
+import EcommerceNav from "../components/ecommerce/Navbar";
+import Shop from "../pages/ecommerce/Shop";
+import WeatherNav from "../components/weather/Navbar";
+import WeatherHome from "../pages/weather/Home";
+import BlogNav from "../components/blog/Navbar";
+import Blog from "../pages/Blog";
+import Register from "../pages/auth/register";
+import Login from "../pages/auth/login";
+import Dashboard from "../pages/Dashboard";
 import PrivateRoute from "./PrivateRoute";
-import ForgotPassword from "../pages/auth/ForgotPassword";
+import ForgotPassword from "../pages/auth/forgot-password";
 export default function PageRoutes() {
   return (
     <Switch>

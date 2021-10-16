@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../context/Provider";
+import { GlobalContext } from "../helper/context/Provider";
 import { Route, Redirect } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
