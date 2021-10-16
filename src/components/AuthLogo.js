@@ -7,7 +7,7 @@ export default function AuthLogo() {
             <Link to="/" className="auth-container__logo">
                 <div className="flex">
                     <span className="auth-container__m-style">M</span>
-                    <span className="auth-container__pack">-blog</span>
+                    <span className="auth-container__pack">-pack</span>
                 </div>
             </Link>
         </div>
