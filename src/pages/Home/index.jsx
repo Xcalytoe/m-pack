@@ -1,23 +1,16 @@
+/* eslint-disable max-len */
 import React from 'react';
 import style from './home.module.scss';
-import hero
-	from '../../assets/images/m-pack/m-pack2_o7d8mi_c_scale,w_1920.webp';
-import hero1
-	from '../../assets/images/m-pack/m-pack2_o7d8mi_c_scale,w_310.webp';
-import hero2
-	from '../../assets/images/m-pack/m-pack2_o7d8mi_c_scale,w_1177.webp';
-import weather
-	from '../../assets/images/weather/weather_hrfd74_c_scale,w_730.webp';
-import weather1
-	from '../../assets/images/weather/weather_hrfd74_c_scale,w_310.webp';
+import hero from '../../assets/images/m-pack/m-pack2_o7d8mi_c_scale,w_1920.webp';
+import hero1 from '../../assets/images/m-pack/m-pack2_o7d8mi_c_scale,w_310.webp';
+import hero2 from '../../assets/images/m-pack/m-pack2_o7d8mi_c_scale,w_1177.webp';
+import weather from '../../assets/images/weather/weather_hrfd74_c_scale,w_730.webp';
+import weather1 from '../../assets/images/weather/weather_hrfd74_c_scale,w_310.webp';
 import blog from '../../assets/images/blog/blog_uui62c_c_scale,w_730.webp';
 import blog1 from '../../assets/images/blog/blog_uui62c_c_scale,w_310.webp';
-import ecommerce
-	from '../../assets/images/ecommerce/ecommerce_clo8px_c_scale,w_730.webp';
-import ecommerce1
-	from '../../assets/images/ecommerce/ecommerce_clo8px_c_scale,w_310.webp';
-import ecommerce2
-	from '../../assets/images/ecommerce/ecommerce_clo8px_c_scale,w_684.webp';
+import ecommerce from '../../assets/images/ecommerce/ecommerce_clo8px_c_scale,w_730.webp';
+import ecommerce1 from '../../assets/images/ecommerce/ecommerce_clo8px_c_scale,w_310.webp';
+import ecommerce2 from '../../assets/images/ecommerce/ecommerce_clo8px_c_scale,w_684.webp';
 import ProductCard from '../../components/ProductCard';
 
 export default function MainHome() {
