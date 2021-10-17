@@ -1,0 +1,39 @@
+@import "../../../style//sass/m_pack_mixins";
+
+.subNav {
+  &__btn {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    column-gap: 20px;
+    button {
+      padding: 10px 30px;
+      @include border-radius(20px);
+      background: transparent;
+      @include border(1px solid hsl(240, 10%, 70%));
+      @include transition(all 0.3s);
+      cursor: pointer;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 18px;
+      &:hover {
+        @include transition(all 0.3s);
+        background: hsl(39, 100%, 95%);
+      }
+    }
+  }
+  &__active {
+    @include border(1px solid hsl(39, 80%, 40%) !important);
+    color: hsl(39, 80%, 40%);
+    &:hover {
+      background: none !important;
+    }
+  }
+  &__underline {
+    @include border-bottom(1px solid hsl(240, 10%, 90%));
+    margin-bottom: 40px;
+  }
+}

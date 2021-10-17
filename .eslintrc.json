@@ -5,8 +5,7 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "standard",
-        "prettier"
+        "xo"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -19,5 +18,10 @@
         "react"
     ],
     "rules": {
+        "max-len": ["error", {"code": 80, "ignoreUrls": true}],
+        "indent": [
+            "error",
+            "tab"
+        ]
     }
 }

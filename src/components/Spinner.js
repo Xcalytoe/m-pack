@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
 // eslint-disable-next-line react/prop-types
-function Spinner({ colorLight, colorDark }) {
-  return (
-    <>
-      <div id="loading"></div>
-      <style>
-        {`
+function Spinner({colorLight, colorDark}) {
+	return (
+		<>
+			<div id="loading"></div>
+			<style>
+				{`
         #loading {
           display: inline-block;
           width: 25px;
@@ -25,9 +25,9 @@ function Spinner({ colorLight, colorDark }) {
           to { -webkit-transform: rotate(360deg); }
         }
         `}
-      </style>
-    </>
-  );
+			</style>
+		</>
+	);
 }
 
 export default Spinner;
