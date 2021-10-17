@@ -18,10 +18,6 @@
         "react"
     ],
     "rules": {
-        "max-len": ["error", {"code": 80, "ignoreUrls": true}],
-        "indent": [
-            "error",
-            "tab"
-        ]
+        "max-len": ["error", {"code": 80, "ignoreUrls": true}]
     }
 }

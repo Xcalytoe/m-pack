@@ -17,71 +17,71 @@ export const initialAuthState = {
 const auth = (state = initialAuthState, action) => {
 	const {type, payload} = action;
 	switch (type) {
-	case REG_LOADING:
-	case LOGIN_LOADING:
-	case SIGNOUT_LOADING:
-		return {
-			...state,
-			loading: true,
-			authError: null,
-			loginError: null,
-		};
-	case REG_SUCCESS:
-	case LOGIN_SUCCESS:
-		return {
-			...state,
-			loading: false,
-			authError: null,
-			user: payload,
-			loginError: null,
-		};
-	case REG_ERROR:
-		return {
-			loading: false,
-			user: null,
-			authError: payload,
-			loginError: null,
-		};
-	case LOGIN_ERROR:
-		return {
-			loading: false,
-			user: null,
-			authError: null,
-			loginError: payload,
-		};
-	case RESET_PASS_LOADING:
-		return {
-			...state,
-			loading: true,
-			passReset: null,
-			user: null,
-		};
-	case RESET_PASS_SUCCESS:
-		return {
-			loading: false,
-			passReset: payload,
-		};
-	case RESET_PASS_ERROR:
-		return {
-			loading: false,
-			passResetErr: payload,
-		};
-	case SIGNOUT_ERROR:
-		return {
-			...state,
-			loading: false,
-			// User: payload,
-			authError: payload,
-			loginError: null,
-		};
-	case SIGNOUT_SUCCESS:
-		return {
-			loading: false,
-			user: payload,
-		};
+		case REG_LOADING:
+		case LOGIN_LOADING:
+		case SIGNOUT_LOADING:
+			return {
+				...state,
+				loading: true,
+				authError: null,
+				loginError: null,
+			};
+		case REG_SUCCESS:
+		case LOGIN_SUCCESS:
+			return {
+				...state,
+				loading: false,
+				authError: null,
+				user: payload,
+				loginError: null,
+			};
+		case REG_ERROR:
+			return {
+				loading: false,
+				user: null,
+				authError: payload,
+				loginError: null,
+			};
+		case LOGIN_ERROR:
+			return {
+				loading: false,
+				user: null,
+				authError: null,
+				loginError: payload,
+			};
+		case RESET_PASS_LOADING:
+			return {
+				...state,
+				loading: true,
+				passReset: null,
+				user: null,
+			};
+		case RESET_PASS_SUCCESS:
+			return {
+				loading: false,
+				passReset: payload,
+			};
+		case RESET_PASS_ERROR:
+			return {
+				loading: false,
+				passResetErr: payload,
+			};
+		case SIGNOUT_ERROR:
+			return {
+				...state,
+				loading: false,
+				// User: payload,
+				authError: payload,
+				loginError: null,
+			};
+		case SIGNOUT_SUCCESS:
+			return {
+				loading: false,
+				user: payload,
+			};
 
-	default:
-		return state;
+		default:
+			return state;
 	}
 };
 

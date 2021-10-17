@@ -8,6 +8,8 @@ export default function Blog() {
 			<FilterNav/>
 			<section className="section-container">
 				<PostCard/>
+				<PostCard/>
+				<PostCard/>
 			</section>
 		</div>
 	);

@@ -12,12 +12,7 @@ import Spinner from '../../components/Spinner';
 export default function ForgotPassword() {
 	const {state, dispatch} = useContext(GlobalContext);
 	const {passReset, passResetErr, loading, user} = state;
-	console.log(state);
-	const {
-		register,
-		handleSubmit,
-		formState: {errors},
-	} = useForm({
+	const {register, handleSubmit, formState: {errors}} = useForm({
 		resolver: yupResolver(forgotPassSchema),
 		mode: 'all',
 	});
