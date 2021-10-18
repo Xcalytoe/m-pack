@@ -23,6 +23,9 @@ export default function BlogNav() {
 				<nav className={`${style.colGap} flex`}>
 					<Link to="/">Home</Link>
 					<Link to="/blog/posts">Posts</Link>
+					<Link to="/dashboard/blog/create-posts">
+            Add post
+					</Link>
 				</nav>
 				<div className={`${style.colGap} flex`}>
 					{user ? (

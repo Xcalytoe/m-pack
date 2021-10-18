@@ -4,11 +4,13 @@ import style from './filterNav.module.scss';
 export default function index() {
 	const [active, setActive] = useState('tag');
 	const tags = [
-		{name: 'All categories', val: 'tag'},
-		{name: 'Cat one', val: 'tag1'},
-		{name: 'Cat two', val: 'tag2'},
-		{name: 'Cat three', val: 'tag3'},
-		{name: 'Cat four', val: 'tag4'},
+		{name: 'All', val: 'tag'},
+		{name: 'Finance', val: 'tag1'},
+		{name: 'Fitness', val: 'tag2'},
+		{name: 'Travel', val: 'tag3'},
+		{name: 'Tech', val: 'tag4'},
+		{name: 'Food', val: 'tag5'},
+		{name: 'Music', val: 'tag6'},
 	];
 	const options = tags.map(tag => (
 		<button

@@ -1,0 +1,51 @@
+@import "../../../style/sass/m_pack_mixins";
+.form {
+  max-width: 800px;
+  width: 100%;
+  margin: 40px auto;
+  h4 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 34px;
+    color: #012224;
+    margin: 20px 0;
+  }
+  &__input {
+      margin-top: 30px;
+    label {
+      display: block;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 20px;
+      color: #2e3a59;
+      margin: 6px 0;
+    }
+    input{
+        height: 50px;
+    }
+    textarea{
+        min-height: 150px;
+    }
+    input, textarea, select {
+      font-size: 1rem;
+      @include outline (none);
+      @include border (1px solid gray);
+      @include border-radius (5px);
+      padding: 1rem 0.7rem;
+      color: gray;
+      width: 100%;
+      @include transition(all 0.1s ease-out);
+    //   &.focused {
+    //     // border-color: #6200EE;
+    //     background: #fff;
+       
+    //   }
+    &.error {
+        @include border(1px solid red);
+        @include transition(all 0.1s ease-out);
+    }
+    }
+  }
+}

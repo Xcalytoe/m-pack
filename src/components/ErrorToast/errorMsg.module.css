@@ -1,0 +1,16 @@
+.authContainer__mainError{
+    margin-bottom: 10px;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+   
+}
+.authContainer__mainError span{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #C81C1C; 
+    margin-top: 0;
+    display: inline-block; 
+}

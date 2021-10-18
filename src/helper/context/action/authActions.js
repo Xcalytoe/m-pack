@@ -125,7 +125,6 @@ export const signOutUser = () => async dispatch => {
 		.then(() => {
 			dispatch({
 				type: SIGNOUT_SUCCESS,
-				authError: null,
 				payload: null,
 			});
 		})

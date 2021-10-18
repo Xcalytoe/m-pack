@@ -77,6 +77,7 @@ const auth = (state = initialAuthState, action) => {
 		case SIGNOUT_SUCCESS:
 			return {
 				loading: false,
+				authError: null,
 				user: payload,
 			};
 

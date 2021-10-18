@@ -1,0 +1,15 @@
+.authContainer__mainMsg {
+  margin-bottom: 10px;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+}
+.authContainer__mainMsg span {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #069481;
+  margin-top: 0;
+  display: inline-block;
+}

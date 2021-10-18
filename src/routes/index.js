@@ -13,6 +13,7 @@ import Login from '../pages/auth/login';
 import Dashboard from '../pages/Dashboard';
 import PrivateRoute from './PrivateRoute';
 import ForgotPassword from '../pages/auth/forgot-password';
+import CreatePost from '../pages/Dashboard/CreatePost';
 export default function PageRoutes() {
 	return (
 		<Switch>
@@ -43,6 +44,9 @@ export default function PageRoutes() {
 			</Route>
 			<PrivateRoute exact path="/dashboard">
 				<Dashboard />
+			</PrivateRoute>
+			<PrivateRoute exact path="/dashboard/blog/create-posts">
+				<CreatePost/>
 			</PrivateRoute>
 		</Switch>
 	);

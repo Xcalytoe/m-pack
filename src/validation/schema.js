@@ -43,3 +43,32 @@ export const forgotPassSchema = yup
 			.required('Please enter your email'),
 	})
 	.required();
+
+export const createPostSchema = yup
+	.object()
+	.shape({
+		postTitle: yup
+			.string()
+			.required('Field cannot be empty'),
+		description: yup
+			.string()
+			.min(80, 'Description must be at least 80 characters')
+			.required('Field cannot be empty'),
+		postBody: yup
+			.string()
+			.min(130, 'Post must be at least 130 characters')
+			.required('Field cannot be empty'),
+		postCategory: yup
+			.string()
+			.required('Field must be selected'),
+		postImage: yup
+			.mixed()
+			.test('name',
+				'Image is required',
+				file => file.length !== 0)
+			.test('fileSize',
+				'File size too large, max file size is 1 Mb',
+				file => file.length !== 0 && file[0].size <= 1100000),
+
+	})
+	.required();
