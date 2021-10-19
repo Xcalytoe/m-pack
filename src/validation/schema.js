@@ -56,7 +56,7 @@ export const createPostSchema = yup
 			.required('Field cannot be empty'),
 		postBody: yup
 			.string()
-			.min(130, 'Post must be at least 130 characters')
+			// .min(1, 'Post must be at least 130 characters')
 			.required('Field cannot be empty'),
 		postCategory: yup
 			.string()

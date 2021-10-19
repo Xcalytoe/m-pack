@@ -14,6 +14,7 @@ import Dashboard from '../pages/Dashboard';
 import PrivateRoute from './PrivateRoute';
 import ForgotPassword from '../pages/auth/forgot-password';
 import CreatePost from '../pages/Dashboard/CreatePost';
+import RichText from '../components/RichText';
 export default function PageRoutes() {
 	return (
 		<Switch>
@@ -41,6 +42,9 @@ export default function PageRoutes() {
 			</Route>
 			<Route exact path="/login">
 				<Login />
+			</Route>
+			<Route exact path="/rich">
+				<RichText/>
 			</Route>
 			<PrivateRoute exact path="/dashboard">
 				<Dashboard />

@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {createPostSchema} from '../../../validation/schema';
 import Spinner from '../../../components/Spinner';
 import style from './createPost.module.scss';
+import {EditorState} from 'draft-js';
+import {Editor} from 'react-draft-wysiwyg';
+import {convertToHTML} from 'draft-convert';
+import DOMPurify from 'dompurify';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+
 export default function index() {
 	const {
 		register,
@@ -17,6 +23,26 @@ export default function index() {
 		console.log(data);
 	};
 
+	const [editorState, setEditorState] = useState(
+		() => EditorState.createEmpty(),
+	);
+	const [convertedContent, setConvertedContent] = useState(null);
+	const handleEditorChange = state => {
+		setEditorState(state);
+		convertContentToHTML();
+	};
+
+	const convertContentToHTML = () => {
+		const currentContentAsHTML
+            = convertToHTML(editorState.getCurrentContent());
+		console.log(currentContentAsHTML);
+		setConvertedContent(currentContentAsHTML);
+	};
+
+	const createMarkup = html => (
+		DOMPurify.sanitize(html) // Prevent xss
+	);
+	console.log(createMarkup(convertedContent).length);
 	return (
 		<div>
 			<form className={style.form} onSubmit={handleSubmit(createPost)}>
@@ -55,12 +81,33 @@ export default function index() {
 				<div className={style.form__input}>
 					<label htmlFor="postBody">Post body</label>
 					<textarea
-						className={errors?.postBody ? style.error : ''}
+						className={`${errors?.postBody ? style.error : ''}
+                         ${style.form__hide}`}
 						id="postBody"
 						{...register('postBody')}
 						name="postBody"
+						value={createMarkup(convertedContent)}
 						placeholder="Please write your post"
 					/>
+
+					<div>
+						<Editor
+							editorState={editorState}
+							onEditorStateChange={handleEditorChange}
+							wrapperClassName={`wrapper-class 
+                            ${errors?.postBody ? 'wrapper-error' : ''}`}
+							editorClassName="editor-class"
+							toolbarClassName="toolbar-class"
+						/>
+						<div dangerouslySetInnerHTML
+							={{__html:
+                            createMarkup(convertedContent)}}></div>
+						<div dangerouslySetInnerHTML={{__html:
+                        createMarkup(convertedContent),
+						}}>
+
+						</div>
+					</div>
 					{errors?.postBody
 						? <span className="form-group__error-msg">
 							{errors?.postBody.message}
@@ -112,6 +159,26 @@ export default function index() {
                         Create post</button>
 				</div>
 			</form>
+			<style>
+				{`
+				.wrapper-class {
+					padding: 1rem;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                  }
+                  .wrapper-error{
+                    border: 1px solid red;
+                  }
+				  .editor-class {
+					background-color:hsl(240, 50%, 98%);
+					padding: 1rem;
+					border: 1px solid #ccc;
+				  }
+				  .toolbar-class {
+					border: 1px solid #ccc;
+				  }
+				`}
+			</style>
 		</div>
 	);
 }

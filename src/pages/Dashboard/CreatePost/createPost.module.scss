@@ -11,6 +11,11 @@
     color: #012224;
     margin: 20px 0;
   }
+  &__hide{
+      position: absolute;
+      left: -2000px;
+      opacity: 0;
+  }
   &__input {
       margin-top: 30px;
     label {
